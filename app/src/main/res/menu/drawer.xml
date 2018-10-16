@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/navItemHome"
+            android:checked="true"
+            android:icon="@mipmap/ic_home"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/navItemBookRoom"
+            android:checked="true"
+            android:icon="@mipmap/ic_bed"
+            android:title="@string/book_room" />
+        <item
+            android:id="@+id/navItemMyRoom"
+            android:checked="true"
+            android:enabled="false"
+            android:icon="@mipmap/ic_key"
+            android:title="@string/my_room" />
+        <item
+            android:id="@+id/navItemSuggestions"
+            android:checked="true"
+            android:icon="@mipmap/ic_beach"
+            android:title="@string/suggestions" />
+        <item
+            android:id="@+id/navItemConcierge"
+            android:checked="true"
+            android:icon="@mipmap/ic_bot"
+            android:title="@string/concierge" />
+        <item
+            android:id="@+id/navItemLogout"
+            android:checked="true"
+            android:icon="@mipmap/ic_logout"
+            android:title="@string/logout" />
+        <item
+            android:id="@+id/navItemAbout"
+            android:checked="true"
+            android:title="@string/about" />
+    </group>
+</menu>

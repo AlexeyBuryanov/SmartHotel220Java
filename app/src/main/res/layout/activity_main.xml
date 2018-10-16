@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.alexeyburyanov.smarthotel.ui.main.MainActivity">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.alexeyburyanov.smarthotel.ui.main.MainViewModel" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/drawerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/clRootView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false">
+                <LinearLayout
+                    android:id="@+id/activityMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <android.support.design.widget.AppBarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:background="@color/transparent">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <com.synnapps.carouselview.CarouselView
+                                android:id="@+id/carouselView"
+                                android:layout_width="match_parent"
+                                android:layout_height="280dp"
+                                android:layout_gravity="top"
+                                app:fillColor="@color/white"
+                                android:background="@mipmap/hero_image"
+                                app:indicatorOrientation="horizontal"
+                                app:pageColor="@color/translucent_white"
+                                app:radius="3dp"
+                                app:slideInterval="10000"
+                                app:strokeColor="@color/translucent_white"
+                                app:strokeWidth="1dp" />
+                            <android.support.v7.widget.Toolbar
+                                android:id="@+id/toolbar"
+                                style="@style/Toolbar" />
+                            <ImageView
+                                android:layout_width="74dp"
+                                android:layout_height="74dp"
+                                android:layout_marginStart="170dp"
+                                android:layout_marginTop="30dp"
+                                android:contentDescription="@string/logo"
+                                android:src="@mipmap/simbol_logo" />
+                            <Button
+                                android:id="@+id/buttonOpenDoor"
+                                android:layout_width="26dp"
+                                android:layout_height="26dp"
+                                android:layout_alignEnd="@id/carouselView"
+                                android:layout_alignTop="@id/carouselView"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginTop="45dp"
+                                android:background="@mipmap/ic_card"
+                                android:onClick="@{() -> viewModel.onOpenDoor()}"
+                                android:soundEffectsEnabled="false" />
+                        </RelativeLayout>
+                    </android.support.design.widget.AppBarLayout>
+                    <!-- Нет брони -->
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/layoutNoBooking"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="@{viewModel.isBooking ? View.GONE : View.VISIBLE}">
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_begin="205dp" />
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_begin="225dp" />
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_begin="405dp" />
+                        <!-- Забронировать номер -->
+                        <ImageView
+                            android:id="@+id/imageView1"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:contentDescription="@string/img1"
+                            android:onClick="@{() -> viewModel.onBooking()}"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img_1"
+                            app:layout_constraintBottom_toTopOf="@+id/buttonBookRoom"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <Button
+                            android:id="@+id/buttonBookRoom"
+                            style="@style/Widget.AppCompat.Button"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:background="@color/colorAccent"
+                            android:onClick="@{() -> viewModel.onBooking()}"
+                            android:stateListAnimator="@null"
+                            android:text="@string/book_a_room"
+                            android:textAppearance="@style/TextAppearance.Text.Bold"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline"
+                            app:layout_constraintStart_toStartOf="parent" />
+                        <!-- Забронировать конференц-зал -->
+                        <ImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:contentDescription="@string/img2"
+                            android:onClick="@{() -> viewModel.onBooking()}"
+                            android:orientation="vertical"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img_2"
+                            app:layout_constraintBottom_toTopOf="@+id/buttonBookConferenceRoom"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <Button
+                            android:id="@+id/buttonBookConferenceRoom"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:onClick="@{() -> viewModel.onBooking()}"
+                            android:orientation="vertical"
+                            android:stateListAnimator="@null"
+                            android:text="@string/book_conference_room"
+                            android:textAppearance="@style/TextAppearance.Text.Bold"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline" />
+                        <!-- Ресторан -->
+                        <TextView
+                            android:id="@+id/tvSuggestions2"
+                            style="@style/TextAppearance.Text.Regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/suggestions"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                        <TextView
+                            android:id="@+id/tvSeeAll2"
+                            style="@style/TextAppearance.Text.Regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/seeAll"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline"
+                            app:layout_constraintStart_toEndOf="@+id/tvSuggestions2"
+                            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                        <TextView
+                            android:id="@+id/textView2"
+                            style="@style/TextAppearance.Text.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/restaurant"
+                            android:textSize="17sp"
+                            app:layout_constraintBottom_toTopOf="@+id/textView6"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvSuggestions2"
+                            app:layout_constraintVertical_bias="0.7" />
+                        <TextView
+                            android:id="@+id/textView6"
+                            style="@style/TextAppearance.Text.Regular"
+                            android:layout_width="149dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="44dp"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/what_do_you_want_to_eat_today"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/guideline6"
+                            app:layout_constraintStart_toStartOf="parent" />
+                        <!-- Ещё одна картинка -->
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:contentDescription="@string/img3"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img_3"
+                            app:layout_constraintBottom_toTopOf="@+id/guideline6"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline"
+                            app:layout_constraintTop_toTopOf="@+id/guideline2" />
+                        <View
+                            android:id="@+id/bgProgramButtons"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@color/colorPrimaryDark"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                    </android.support.constraint.ConstraintLayout>
+                    <!-- Есть бронь -->
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/layoutBooking"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="@{viewModel.isBooking ? View.VISIBLE : View.GONE}">
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_begin="205dp" />
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_begin="185dp" />
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_begin="430dp" />
+                        <!-- Фон для первой панели -->
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="185dp"
+                            android:background="@color/super_light_yellow"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <!-- Температура в номере -->
+                        <TextView
+                            android:id="@+id/textView5"
+                            style="@style/TextAppearance.Text.Bold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginTop="12dp"
+                            android:text="@string/room_temperature"
+                            android:textSize="12sp"
+                            app:layout_constraintRight_toLeftOf="@id/guideline3"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <com.alexeyburyanov.smarthotel.ui.custom.TemperatureView
+                            android:id="@+id/temperatureView"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_margin="10dp"
+                            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                        <!-- Окружающий свет -->
+                        <TextView
+                            android:id="@+id/textView11"
+                            style="@style/TextAppearance.Text.Bold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="12dp"
+                            android:text="@string/ambient_light"
+                            android:textSize="12sp"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline3"/>
+                        <ProgressBar
+                            android:id="@+id/ambientLightProgress"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="154dp"
+                            android:layout_height="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="3dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="3dp"
+                            android:max="1700"
+                            app:layout_constraintBottom_toTopOf="@+id/textView3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/guideline3"
+                            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+                        <TextView
+                            android:id="@+id/tvAmbientLight"
+                            style="@style/TextAppearance.Text.Regular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="10dp"
+                            android:text="7000"
+                            android:textSize="11sp"
+                            app:layout_constraintBottom_toTopOf="@+id/textView3"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toEndOf="@+id/ambientLightProgress"
+                            app:layout_constraintTop_toBottomOf="@+id/textView11"
+                            app:layout_constraintVertical_bias="0.435" />
+                        <!-- График уборки -->
+                        <TextView
+                            android:id="@+id/textView3"
+                            style="@style/TextAppearance.Text.Bold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="82dp"
+                            android:text="@string/cleaning_schedule"
+                            android:textSize="12sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline3"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:id="@+id/imageView9"
+                            android:layout_width="0dp"
+                            android:layout_height="62dp"
+                            android:layout_margin="10dp"
+                            android:contentDescription="@string/cleaning"
+                            android:scaleType="fitCenter"
+                            android:src="@mipmap/be_green"
+                            app:layout_constraintTop_toBottomOf="@+id/textView3"
+                            app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline3" />
+                        <!-- Ресторан -->
+                        <TextView
+                            android:id="@+id/tvSuggestions"
+                            style="@style/TextAppearance.Text.Regular"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/suggestions"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+                        <TextView
+                            android:id="@+id/tvSeeAll"
+                            style="@style/TextAppearance.Text.Regular"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/seeAll"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                            app:layout_constraintStart_toEndOf="@+id/tvSuggestions"
+                            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+                        <TextView
+                            android:id="@+id/textView9"
+                            style="@style/TextAppearance.Text.Bold"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="28dp"
+                            android:text="@string/restaurant"
+                            android:textSize="17sp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvSuggestions" />
+                        <TextView
+                            android:id="@+id/textView10"
+                            style="@style/TextAppearance.Text.Regular"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/what_do_you_want_to_eat_today"
+                            android:textSize="14sp"
+                            app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                            app:layout_constraintHorizontal_bias="0.133"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView9"
+                            app:layout_constraintVertical_bias="0.3" />
+                        <!-- Ещё одна картинка -->
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:contentDescription="@string/img3"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img_3"
+                            app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/guideline3"
+                            app:layout_constraintTop_toTopOf="@+id/guideline4" />
+                        <!-- Кнопки в мой номер и забронировать конференц-зал -->
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            app:layout_constraintGuide_begin="360dp" />
+                        <Button
+                            android:id="@+id/buttonBookRoom2"
+                            style="@style/Widget.AppCompat.Button"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:background="@color/colorAccent"
+                            android:onClick="@{() -> viewModel.onGoToMyRoom()}"
+                            android:stateListAnimator="@null"
+                            android:text="@string/go_to_my_room"
+                            android:textAppearance="@style/TextAppearance.Text.Bold"
+                            android:textColor="@color/white"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/guideline5"
+                            app:layout_constraintVertical_bias="0.0" />
+                        <Button
+                            android:id="@+id/buttonBookConferenceRoom2"
+                            android:layout_width="0dp"
+                            android:layout_height="45dp"
+                            android:background="@color/white"
+                            android:onClick="@{() -> viewModel.onBooking()}"
+                            android:orientation="vertical"
+                            android:stateListAnimator="@null"
+                            android:text="@string/book_conference_room"
+                            android:textAppearance="@style/TextAppearance.Text.Bold"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/guideline3"
+                            app:layout_constraintTop_toTopOf="@+id/guideline5"
+                            app:layout_constraintVertical_bias="0.0" />
+                        <View
+                            android:id="@+id/bgProgramButtons2"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@color/colorPrimaryDark"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.5"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/buttonBookConferenceRoom2" />
+                    </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
+            </android.support.design.widget.CoordinatorLayout>
+            <android.support.design.widget.NavigationView
+                android:id="@+id/navigationView"
+                android:theme="@style/NavigationTheme"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:background="@color/white"
+                app:itemBackground="@color/white"
+                app:itemIconTint="@null"
+                app:itemTextColor="@color/menu_text_color"
+                app:menu="@menu/drawer">
+                <TextView
+                    android:id="@+id/tvAppVersion"
+                    style="@style/TextStyle.Title.Sub"
+                    android:textSize="12sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:padding="5dp"
+                    android:text="@{viewModel.appVersion}" />
+            </android.support.design.widget.NavigationView>
+        </android.support.v4.widget.DrawerLayout>
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+    </FrameLayout>
+</layout>

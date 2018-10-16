@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.booking.hotel.BookingHotelActivity">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.alexeyburyanov.smarthotel.ui.booking.hotel.BookingHotelViewModel" />
+    </data>
+    <FrameLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/clRootView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v4.widget.NestedScrollView
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:scrollbars="vertical">
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/tvFullCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="20dp"
+                        android:textAppearance="@style/TextAppearance.Text.Regular"
+                        android:textSize="17sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tvNameHotel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:textAppearance="@style/TextAppearance.Text.Regular"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvFullCity" />
+                    <TextView
+                        android:id="@+id/tvPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/teal_700"
+                        android:textAppearance="@style/TextAppearance.Text.Regular"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <RatingBar
+                        android:id="@+id/rbRatingHotel"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginTop="8dp"
+                        android:isIndicator="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
+                    <android.support.constraint.Guideline
+                        android:id="@+id/guideline7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintGuide_begin="82dp" />
+                    <ImageView
+                        android:id="@+id/ivImageHotel"
+                        android:layout_width="0dp"
+                        android:layout_height="350dp"
+                        android:contentDescription="@string/pic_hotel"
+                        android:scaleType="fitXY"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/tabLayout"
+                        style="@style/AppTab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ivImageHotel"
+                        app:tabGravity="fill"
+                        app:tabIndicatorColor="@color/teal_700"
+                        app:tabTextColor="@color/black_effective"
+                        app:tabSelectedTextColor="@color/teal_700"/>
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/hotelViewPager"
+                        android:layout_width="0dp"
+                        android:layout_height="450dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
+                </android.support.constraint.ConstraintLayout>
+            </android.support.v4.widget.NestedScrollView>
+            <Button
+                android:id="@+id/buttonBookNow"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="180dp"
+                android:background="@color/colorAccent"
+                android:text="@string/book_now"
+                android:textAppearance="@style/TextAppearance.Text.Bold"
+                android:onClick="@{() -> viewModel.onBookingNow()}"
+                android:textColor="@color/white"
+                android:visibility="visible"
+                android:layout_gravity="bottom"/>
+        </android.support.design.widget.CoordinatorLayout>
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+    </FrameLayout>
+</layout>

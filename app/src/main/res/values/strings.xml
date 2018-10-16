@@ -1,0 +1,196 @@
+<resources>
+    <string name="app_name">SmartHotel220</string>
+
+    <!--Login-->
+    <string name="login"><b>ВОЙТИ</b></string>
+    <string name="email">E-mail</string>
+    <string name="password">Пароль</string>
+    <string name="or">или войти с помощью</string>
+    <string name="forgot_password"><u>Забыли пароль?</u></string>
+    <string name="dont_have_acc">У вас нет учётной записи?</string>
+    <string name="sign_up"><b>Зарегистрироваться</b></string>
+
+    <!--Drawer-->
+    <string name="open_drawer">Drawer Open</string>
+    <string name="close_drawer">Drawer Close</string>
+
+    <!--Drawer Menus-->
+    <string name="about">О приложении</string>
+    <string name="logout">Выйти</string>
+
+    <!--about fragment-->
+    <string name="project_info">\"Умный\" отель</string>
+    <string name="project_descr">Демонстрационное приложения поиска отелей.</string>
+    <string name="project_copy">Copyright © Alexey Bur\'yanov, 2018.</string>
+    <string name="version">версия</string>
+
+    <string name="lorem_ipsum">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Donec vel nisl eu lorem ultrices imperdiet. Vivamus ut diam quam. Maecenas sit amet
+        aliquam purus. Aenean purus sapien, viverra non mollis et, aliquet eu felis.
+        Aliquam erat volutpat. Nullam et condimentum justo, at dictum est. Duis malesuada
+        augue quis arcu bibendum, vitae facilisis arcu rhoncus.
+    </string>
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+
+        "Bold, graphic, intentional.\n\n"
+
+        "The foundational elements of print based design typography, grids, space, scale, color, "
+        "and use of imagery guide visual treatments. These elements do far more than please the "
+        "eye. They create hierarchy, meaning, and focus. Deliberate color choices, edge to edge "
+        "imagery, large scale typography, and intentional white space create a bold and graphic "
+        "interface that immerse the user in the experience.\n"
+        "An emphasis on user actions makes core functionality immediately apparent and provides "
+        "waypoints for the user.\n\n"
+
+        "Motion provides meaning.\n\n"
+
+        "Motion respects and reinforces the user as the prime mover. Primary user actions are "
+        "inflection points that initiate motion, transforming the whole design.\n"
+        "All action takes place in a single environment. Objects are presented to the user without "
+        "breaking the continuity of experience even as they transform and reorganize.\n"
+        "Motion is meaningful and appropriate, serving to focus attention and maintain continuity. "
+        "Feedback is subtle yet clear. Transitions are efﬁcient yet coherent.\n\n"
+
+        "3D world.\n\n"
+
+        "The material environment is a 3D space, which means all objects have x, y, and z "
+        "dimensions. The z-axis is perpendicularly aligned to the plane of the display, with the "
+        "positive z-axis extending towards the viewer. Every sheet of material occupies a single "
+        "position along the z-axis and has a standard 1dp thickness.\n"
+        "On the web, the z-axis is used for layering and not for perspective. The 3D world is "
+        "emulated by manipulating the y-axis.\n\n"
+
+        "Light and shadow.\n\n"
+
+        "Within the material environment, virtual lights illuminate the scene. Key lights create "
+        "directional shadows, while ambient light creates soft shadows from all angles.\n"
+        "Shadows in the material environment are cast by these two light sources. In Android "
+        "development, shadows occur when light sources are blocked by sheets of material at "
+        "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
+        "y-axis only. The following example shows the card with a height of 6dp.\n\n"
+
+        "Resting elevation.\n\n"
+
+        "All material objects, regardless of size, have a resting elevation, or default elevation "
+        "that does not change. If an object changes elevation, it should return to its resting "
+        "elevation as soon as possible.\n\n"
+
+        "Component elevations.\n\n"
+
+        "The resting elevation for a component type is consistent across apps (e.g., FAB elevation "
+        "does not vary from 6dp in one app to 16dp in another app).\n"
+        "Components may have different resting elevations across platforms, depending on the depth "
+        "of the environment (e.g., TV has a greater depth than mobile or desktop).\n\n"
+
+        "Responsive elevation and dynamic elevation offsets.\n\n"
+
+        "Some component types have responsive elevation, meaning they change elevation in response "
+        "to user input (e.g., normal, focused, and pressed) or system events. These elevation "
+        "changes are consistently implemented using dynamic elevation offsets.\n"
+        "Dynamic elevation offsets are the goal elevation that a component moves towards, relative "
+        "to the component’s resting state. They ensure that elevation changes are consistent "
+        "across actions and component types. For example, all components that lift on press have "
+        "the same elevation change relative to their resting elevation.\n"
+        "Once the input event is completed or cancelled, the component will return to its resting "
+        "elevation.\n\n"
+
+        "Avoiding elevation interference.\n\n"
+
+        "Components with responsive elevations may encounter other components as they move between "
+        "their resting elevations and dynamic elevation offsets. Because material cannot pass "
+        "through other material, components avoid interfering with one another any number of ways, "
+        "whether on a per component basis or using the entire app layout.\n"
+        "On a component level, components can move or be removed before they cause interference. "
+        "For example, a floating action button (FAB) can disappear or move off screen before a "
+        "user picks up a card, or it can move if a snackbar appears.\n"
+        "On the layout level, design your app layout to minimize opportunities for interference. "
+        "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
+        "when a user tries to pick up one of cards.\n\n"
+    </string>
+
+    <string name="descr_bg_splash">фон сплэша</string>
+    <string name="descr_logo_splash">сплэш лого</string>
+    <string name="google_pic_descr">гугл+</string>
+    <string name="fb_pic_descr">фейсбук</string>
+    <string name="login_image_header">изображение заголовка входа</string>
+    <string name="splash">сплэш</string>
+    <string name="logo">лого</string>
+    <string name="notification_icon">иконка уведомления</string>
+    <string name="notifications">Уведомления</string>
+    <string name="background_carousel">фон карусели</string>
+    <string name="img1">изображение1</string>
+    <string name="img2">изображение2</string>
+    <string name="img3">изображение3</string>
+    <string name="suggestions">Предложения</string>
+    <string name="seeAll">Все +</string>
+    <string name="restaurant">Ресторан</string>
+    <string name="what_do_you_want_to_eat_today">Что Вы хотите сегодня съесть?</string>
+    <string name="book_conference_room">ЗАБРОНИРОВАТЬ КОНФЕРЕНЦ-ЗАЛ</string>
+    <string name="book_a_room">ЗАБРОНИРОВАТЬ НОМЕР</string>
+    <string name="back">назад</string>
+    <string name="home">Домой</string>
+    <string name="book_room">Забронировать номер</string>
+    <string name="my_room">Мой номер</string>
+    <string name="concierge">Консьерж</string>
+    <string name="room_temperature">Температура в номере</string>
+    <string name="ambient_light">Окружающий свет</string>
+    <string name="cleaning">График уборки</string>
+    <string name="cleaning_schedule">График уборки</string>
+    <string name="go_to_my_room">МОЙ НОМЕР</string>
+    <string name="where">Где</string>
+    <string name="next">ДАЛЬШЕ</string>
+    <string name="when">Когда</string>
+    <string name="button_sort">Кнопка сортировки</string>
+    <string name="button_filter">Кнопка фильтрации</string>
+    <string name="button_map">Кнопка для показа карты с отелями</string>
+    <string name="pic_hotel">Картинка отеля</string>
+    <string name="services">Услуги</string>
+    <string name="info">Информация</string>
+    <string name="free_wifi">Бесплатный Wi-fi</string>
+    <string name="book_now">ЗАБРОНИРОВАТЬ СЕЙЧАС</string>
+    <string name="check_in_out">Заселение/выписка</string>
+    <string name="default_time_check_in_out">12:00 / 15:00</string>
+    <string name="double_room">Две комнаты</string>
+    <string name="air_conditioning">Кондиционер</string>
+    <string name="purity">Чистота</string>
+    <string name="jacuzzi">Джакузи</string>
+    <string name="individual_room">Индивидуальная комната</string>
+    <string name="yes">ДА</string>
+    <string name="no">НЕТ</string>
+    <string name="notifications_background">Фон уведомлений</string>
+    <string name="no_notifi">Нет никаких уведомлений</string>
+    <string name="bg_room">Фон номера</string>
+    <string name="basket_button">Кнопка с корзиной</string>
+    <string name="def_room_number">1408</string>
+    <string name="do_not_disturb">Не беспокоить</string>
+    <string name="check_out">Выписаться</string>
+    <string name="make_new_booking">СДЕЛАТЬ НОВОЕ БРОНИРОВАНИЕ</string>
+    <string name="hope_to_see_you_again">Надеемся увидить Вас снова!</string>
+    <string name="path_to_my_room">Путь к номеру</string>
+    <string name="temperature">Температура</string>
+    <string name="music_volume">Громкость музыки</string>
+    <string name="window_blinds">Жалюзи</string>
+    <string name="activate_eco_mode">Активировать эко-режим</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAhXXHJfYDjFZH_fXCVKkOwMeKvvDka73Y</string>
+    <string name="skype">Skype</string>
+    <string name="teleg">Telegram</string>
+    <string name="title_dialog_concierge">Пожалуйста, выберите приложение-мессенджер, которое хотите использовать</string>
+    <string name="cancel">Отмена</string>
+    <string name="def_value_ambientlight">600K</string>
+    <string name="def_temperature">21°C</string>
+    <string name="def_value_music">45</string>
+    <string name="def_value_windowblinds">85</string>
+</resources>

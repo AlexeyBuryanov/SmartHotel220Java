@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.booking.calendar.BookingCalendarActivity">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.alexeyburyanov.smarthotel.ui.booking.calendar.BookingCalendarViewModel" />
+    </data>
+    <FrameLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="185dp"
+                android:contentDescription="@string/login_image_header"
+                android:scaleType="center"
+                android:src="@mipmap/img_header_background_1"
+                android:layout_alignParentTop="true"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="82dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Text.Regular"
+                    android:textColor="@color/white"
+                    android:textSize="23sp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="3dp"/>
+                <TextView
+                    android:id="@+id/tvWhen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/TextAppearance.Text.Bold"
+                    android:labelFor="@id/etWhen"
+                    android:textColor="@color/white"
+                    android:text="@string/when"
+                    android:enabled="false"
+                    android:textSize="30sp"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="3dp"/>
+                <EditText
+                    android:id="@+id/etWhen"
+                    style="@android:style/Widget.Material.EditText"
+                    android:background="@android:drawable/dialog_holo_light_frame"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:textSize="18sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/teal_700"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:inputType="text" />
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.savvi.rangedatepicker.CalendarPickerView
+                        android:id="@+id/datePicker"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scrollbarStyle="outsideOverlay" />
+                    <Button
+                        android:id="@+id/buttonNext"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@color/colorAccent"
+                        android:textAppearance="@style/TextAppearance.Text.Bold"
+                        android:onClick="@{() -> viewModel.onNext()}"
+                        android:text="@string/next"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/bgSystemButtons"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:visibility="visible"/>
+                    <View
+                        android:id="@+id/bgSystemButtons"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:background="@color/colorPrimaryDark"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+    </FrameLayout>
+</layout>

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.alexeyburyanov.smarthotel.ui.login.LoginActivity">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.alexeyburyanov.smarthotel.ui.login.LoginViewModel" />
+    </data>
+    <FrameLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/login_image_header"
+                android:scaleType="fitXY"
+                android:src="@mipmap/img_header_background_1"
+                android:layout_marginBottom="280dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:contentDescription="@string/splash"
+                    android:src="@mipmap/logo_splash" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/white"
+                    app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/etEmail"
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="25dp"
+                        android:layout_marginStart="25dp"
+                        android:cursorVisible="true"
+                        android:hint="@string/email"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="50"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:hint="@string/password"
+                    android:textColorHint="@color/white"
+                    app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout">
+                    <!--app:passwordToggleEnabled="true"-->
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/etPassword"
+                        style="@style/TextStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="25dp"
+                        android:layout_marginStart="25dp"
+                        android:cursorVisible="true"
+                        android:inputType="textPassword"
+                        android:maxLength="50"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+                </android.support.design.widget.TextInputLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|end"
+                    android:layout_marginEnd="25dp"
+                    android:text="@string/forgot_password"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/white" />
+                <Button
+                    android:id="@+id/btnServerLogin"
+                    style="@style/Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="20dp"
+                    android:onClick="@{() -> viewModel.onServerLoginClick()}"
+                    android:padding="10dp"
+                    android:shadowRadius="15"
+                    android:text="@string/login"
+                    android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:text="@string/or"
+                    android:textAlignment="center" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:id="@+id/ibGoogleLogin"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@color/transparent"
+                        android:contentDescription="@string/google_pic_descr"
+                        android:onClick="@{() -> viewModel.onGoogleLoginClick()}"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_google_plus" />
+                    <ImageButton
+                        android:id="@+id/ibFbLogin"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="24dp"
+                        android:background="@color/transparent"
+                        android:contentDescription="@string/fb_pic_descr"
+                        android:onClick="@{() -> viewModel.onFbLoginClick()}"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_facebook" />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/dont_have_acc"
+                    android:textAlignment="center" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/sign_up"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorAccent" />
+            </LinearLayout>
+        </RelativeLayout>
+        <android.support.v4.widget.ContentLoadingProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+    </FrameLayout>
+</layout>

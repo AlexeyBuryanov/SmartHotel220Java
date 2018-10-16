@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.alexeyburyanov.smarthotel.ui.notifications.NotificationsActivity">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.alexeyburyanov.smarthotel.ui.notifications.NotificationsViewModel" />
+    </data>
+    <FrameLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+        <RelativeLayout
+            android:id="@+id/rlRoot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/notifications_background"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/img_header_background_1" />
+            <ImageButton
+                android:id="@+id/navBackBtn"
+                style="@style/Button.ImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:background="@color/transparent"
+                android:layout_marginTop="17dp"
+                android:onClick="@{() -> viewModel.onNavBackClick()}"
+                android:tint="@color/white"
+                app:srcCompat="@drawable/ic_keyboard_backspace_24px"
+                android:contentDescription="@string/back" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewNotifi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="70dp"
+                android:choiceMode="singleChoice"
+                android:scrollbars="none"
+                android:textAppearance="@style/TextAppearance.Text.Regular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_notifications" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tvHasNoItems"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/no_notifi"
+            android:textAppearance="@style/TextAppearance.Text.Bold"
+            android:textSize="20sp"
+            android:textColor="@color/light_gray"
+            android:visibility="gone"/>
+        <android.support.v4.widget.ContentLoadingProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+    </FrameLayout>
+</layout>

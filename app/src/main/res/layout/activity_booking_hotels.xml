@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.booking.hotels.BookingHotelsActivity">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.alexeyburyanov.smarthotel.ui.booking.hotels.BookingHotelsViewModel" />
+    </data>
+    <FrameLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/white">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Text.Bold"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="16dp"
+                android:textSize="12sp"
+                android:textColor="@color/teal_700"/>
+            <TextView
+                android:id="@+id/tvWhen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Text.Bold"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="12dp"
+                android:textSize="12sp"
+                android:textColor="@color/teal_700"/>
+            <TextView
+                android:id="@+id/tvNumRooms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.Text.Bold"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="21dp"
+                android:textSize="12sp"
+                android:textColor="@color/teal_700"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?android:attr/dividerHorizontal"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageButton
+                    android:id="@+id/buttonSort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/ic_sort"
+                    android:contentDescription="@string/button_sort"
+                    android:scaleType="fitXY" />
+                <ImageButton
+                    android:id="@+id/buttonFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="23dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/ic_filter"
+                    android:contentDescription="@string/button_filter"
+                    android:scaleType="fitXY" />
+                <ImageButton
+                    android:id="@+id/buttonMap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@mipmap/ic_map"
+                    android:contentDescription="@string/button_map"
+                    android:scaleType="fitXY" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="?android:attr/dividerHorizontal"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewHotels"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="15dp"
+                android:choiceMode="singleChoice"
+                android:scrollbars="vertical"
+                android:textAppearance="@style/TextAppearance.Text.Regular"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:listitem="@layout/item_booking_hotels" />
+        </LinearLayout>
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
+    </FrameLayout>
+</layout>

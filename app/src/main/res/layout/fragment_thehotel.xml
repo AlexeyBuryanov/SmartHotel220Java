@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="com.alexeyburyanov.smarthotel.ui.booking.hotel.thehotel.TheHotelViewModel" />
+    </data>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_ipsum"
+                android:textAppearance="@style/TextAppearance.Text.Regular"
+                android:textSize="16sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/services"
+                android:textAppearance="@style/TextAppearance.Text.Regular"
+                android:textSize="22sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/free_wifi"
+                android:textAlignment="center"
+                android:drawableTop="@mipmap/ic_wifi"
+                android:layout_marginTop="10dp"
+                android:textAppearance="@style/TextAppearance.Text.Light"
+                android:textColor="@color/teal_700"
+                android:textSize="14sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/info"
+                android:textAppearance="@style/TextAppearance.Text.Regular"
+                android:layout_marginTop="25dp"
+                android:textSize="22sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/check_in_out"
+                    android:textAppearance="@style/TextAppearance.Text.Bold"
+                    android:layout_marginTop="5dp"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/default_time_check_in_out"
+                    android:textAppearance="@style/TextAppearance.Text.Regular"
+                    android:layout_marginTop="8dp"
+                    android:textSize="14sp"
+                    android:layout_marginStart="150dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <android.support.v4.widget.ContentLoadingProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"/>
+    </FrameLayout>
+</layout>
